@@ -17,16 +17,29 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
-  },
-  {
-    path: '/task',
-    name: 'Task',
-    component: Task,
-  },
-  {
-    path: '/template',
-    name: 'Template',
-    component: Template,
+    children: [
+      {
+        path: '/task',
+        name: 'Task',
+        component: Task,
+        meta: {
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/template',
+        name: 'Template',
+        component: Template,
+        meta: {
+          keepAlive: true,
+        },
+      },
+      {
+        path: '/template/edit',
+        name: 'TemplateEdit',
+        component: () => import('@/views/TemplateEdit'),
+      },
+    ],
   },
 ];
 
